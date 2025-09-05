@@ -1,6 +1,30 @@
  <head>
   <title>Meta pixel test</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Signals Gateway Pixel + Meta Pixel Code -->
+    <script>
+      !(function(f,b,e,v,vv,n,nn,t,s,tt,ss){
+        if (!f.cbq){nn = f.cbq = function(){nn.initialized ? nn.apply(f.cbq, arguments) : nn.queue.push(arguments);};
+        if(!f._cbq) f._cbq = nn;
+        nn.push = nn; nn.loaded = !0; nn.version = '2.0'; nn.queue = [];
+        tt = b.createElement(e); tt.async = !0; tt.src = vv; ss=b.getElementsByTagName(e)[0]; ss.parentNode.insertBefore(tt,ss);}
+        if (f.xbq) return; if (f.fbq) f.xbq=f.fbq;
+        n = f.fbq = function()
+        {if(arguments[0].startsWith('track')){n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);f.cbq.initialized ? f.cbq.apply(f.cbq, arguments) : f.cbq.queue.push(arguments);}
+        else{n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);}};
+        if(!f._fbq) f._fbq = n;
+        n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = (f.xbq)?f.xbq.queue:[];
+        t = b.createElement(e); t.async = !0; t.src = v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+      })
+      (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js', 'https://d2t057spjxb4o.cloudfront.net/sdk/731485815564361218/events.js');
+      fbq('init', '480822003614488');fbq('track', 'PageView');
+      cbq('setHost', 'https://capig-f3987e30-e2e-tenant.cbinternal.net/');
+    cbq('init', '731485815564361218');
+      cbq('set', 'integrationMethod', 'forkFromSnippetCode');
+      cbq('track', 'PageView');
+    </script>
+  <!-- End Signals Gateway Pixel + Meta Pixel Code -->
 <!--
 <script>
   !function(f,b,e,v,n,t,s)
@@ -18,11 +42,13 @@
 -->
 
 <!-- Google Tag Manager -->
+  <!--
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KNZD2K46');</script>
+  -->
 <!-- End Google Tag Manager -->
 
 </head>
@@ -37,7 +63,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p><button id="purchaseButton">Purchase</button></p>
 <p><button id="addToCartButton">Add to cart</button></p>
 
-  <!--
+ 
 <script type="text/javascript">
   $('#purchaseButton').click(function() {
     fbq('track', 'Purchase', {currency: "USD", value: 30.00, content_ids:["157852347"], content_type: "product"});
@@ -49,7 +75,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     fbq('track', 'AddToCart', {currency: "USD", value: 20.00});
   });
 </script>
--->
+
 
 </body>
 </html>
