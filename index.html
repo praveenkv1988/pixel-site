@@ -43,13 +43,106 @@
 </script>
 -->
 
+<!-- Start SGW Pixel + Meta Pixel + EID -->
+<script>
+!(function(f, b, e, v, vv, n, nn, t, s, tt, ss) {
+  function augmentArgumentsForSpecificCases(args, eventId, argsLength) {
+    var result = Array.prototype.slice.call(args);
+    var eventID = eventId + "." + Date.now().toString() + Math.random().toString(36);
+    // Push empty objects until reaching desired length before eventID object
+    while (result.length < argsLength - 1) {
+      result.push({});
+    }
+    result.push({ eventID: eventID });
+    return result;
+  }
+  if (!f.cbq) {
+    nn = f.cbq = function() {
+      nn.initialized ? nn.apply(f.cbq, arguments) : nn.queue.push(arguments);
+    };
+    if (!f._cbq) f._cbq = nn;
+    nn.push = nn;
+    nn.loaded = !0;
+    nn.version = '2.0';
+    nn.queue = [];
+    tt = b.createElement(e);
+    tt.async = !0;
+    tt.src = vv;
+    ss = b.getElementsByTagName(e)[0];
+    ss.parentNode.insertBefore(tt, ss);
+  }
+  if (f.xbq) return;
+  if (f.fbq) f.xbq = f.fbq;
+  n = f.fbq = function() {
+    var args, eventID;
+    // Handle 'track' and 'trackCustom'
+    if (arguments[0] === 'track' || arguments[0] === 'trackCustom') {
+      arguments = augmentArgumentsForSpecificCases(arguments, arguments[1], 4);
+    }
+    // Handle 'trackSingle' and 'trackSingleCustom'
+    else if (arguments[0] === 'trackSingle' || arguments[0] === 'trackSingleCustom') {
+      arguments = augmentArgumentsForSpecificCases(arguments, arguments[2], 5);
+    }
+
+    // Ensure eventID for 'track'
+    if (arguments[0] === 'track') {
+      if (!arguments[3] || !arguments[3].eventID) {
+        args = Array.prototype.slice.call(arguments);
+        args[3] = args[3] || {};
+        args[3].eventID = arguments[1] + "." + Date.now().toString() + "." + Math.random().toString(36);
+        arguments = args;
+      }
+    }
+
+    // Ensure eventID for 'trackSingle'
+    if (typeof arguments[0] === 'string' && arguments[0].indexOf('trackSingle') === 0) {
+      if (!arguments[4] || !arguments[4].eventID) {
+        args = Array.prototype.slice.call(arguments);
+        args[4] = args[4] || {};
+        args[4].eventID = arguments[2] + "." + Date.now().toString() + "." + Math.random().toString(36);
+        arguments = args;
+      }
+    }
+    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    f.cbq.initialized ? f.cbq.apply(f.cbq, arguments) : f.cbq.queue.push(arguments);
+  };
+  if (!f._fbq) f._fbq = n;
+  n.push = n;
+  n.loaded = !0;
+  n.version = '2.0';
+  n.queue = (f.xbq) ? f.xbq.queue : [];
+  t = b.createElement(e);
+  t.async = !0;
+  t.src = v;
+  s = b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t, s);
+})(
+  window,
+  document,
+  'script',
+  'https://connect.facebook.net/en_US/fbevents.js',
+  'https://d2t057spjxb4o.cloudfront.net/sdk/731485815564361218/events.js'
+);
+
+// Facebook Pixel and cbq setup
+fbq('init', '480822003614488');
+fbq('track', 'PageView');
+cbq('setHost', 'https://capig-f3987e30-e2e-tenant.cbinternal.net/');
+cbq('init', '731485815564361218');
+cbq('set', 'integrationMethod', 'forkFromSnippetCodeGTM');
+cbq('track', 'PageView');
+</script>
+
+<!-- End SGW Pixel + Meta Pixel + EID -->
+
 <!-- Google Tag Manager -->
-  
+<!--
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KNZD2K46');</script>
+  -->
  
 <!-- End Google Tag Manager -->
 
